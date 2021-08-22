@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root to: "hello#start"
+  root 'hello#start' # или root to: 'hello#start', as: 'home'
 end
