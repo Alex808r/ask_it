@@ -1,11 +1,9 @@
 <h1> Questions </h1>
-<%= @questions.inspect %>
+<%#= @questions.inspect %>
 
 <% @questions.each do |question| %>
-  <h2> <%= question.id %></h2>
   <h2> <%= question.title %></h2>
   <h2> <%= question.body %></h2>
   <time datetime="<%= question.formatted_created_at %>"> <%= question.formatted_created_at %></time>
-  <p> <%= question.updated_at %></p>
-
+<%= link_to 'Edit', edit_question_path(question) %>
 <% end %>
