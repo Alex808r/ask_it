@@ -16,6 +16,7 @@ class QuestionsController < ApplicationController
     #render plain: params
     @question = Question.new(question_params)
     if @question.save
+      flash[:success] = 'Question save'
       redirect_to questions_path
     else
       render :new
