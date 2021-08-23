@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   def index
     @questions = Question.all
   end
+  
 
   def new
     @question = Question.new
@@ -30,6 +31,12 @@ class QuestionsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @question = Question.find_by(id: params[:id])
+    @question.destroy
+    redirect_to questions_path
   end
 
   private
