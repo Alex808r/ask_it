@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+
   before_action :set_question!, only: %i[show edit update destroy ] # вынесли общий код в метод и определили загрузку
   # метода для нужных action
 
@@ -54,7 +55,8 @@ class QuestionsController < ApplicationController
   end
 
   def set_question!
-    @question = Question.find(params[:id])
-    # @question = Question.find_by(id: params[:id]) аналогичная запись
+    @question = Question.find(params[:id]) #RecordNotFound если запись не найдена.
+    # @question = Question.find_by(id: params[:id]) аналогичная запись/ Если вопрос с id не будет найден, получим ошибку
+    # NoMethodError. Поэтому лучше использовать Question.find(params[:id])
   end
 end
