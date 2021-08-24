@@ -8,9 +8,13 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    # @question = Question.find_by(id: params[:id])
     @answer = @question.answers.build
     @answers = @question.answers.order created_at: :desc # для отображения всех ответов
-    # @question = Question.find_by(id: params[:id])
+    # @answers = Answer.where(question_id: @question.id).order created_at: :desc - для отображения всех ответов альтернативная запись
+    # @answers = Answer.where(question: @question).limit(2).order created_at: :desc - для отображения всех ответов альтернативная запись c лимитом 2 записи
+
+
   end
 
   def new

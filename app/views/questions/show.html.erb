@@ -1,4 +1,5 @@
-<% provide(:page_title, 'Show question') %>
+<% provide(:page_title, "Show question # #{@question.id}") %>
+<% currently_at 'Show question' %>
 
 <h1 class="mb-4"><%= @question.title %></h1>
 
