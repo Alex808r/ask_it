@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = @question.answers.build
+    @answers = @question.answers.order created_at: :desc # для отображения всех ответов
     # @question = Question.find_by(id: params[:id])
   end
 

@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   # resources :questions, only: %i[index show new edit create update destroy]
 
   resources :questions do
-    resources :answers, only: %i[create]
+    resources :answers, only: %i[create destroy]
   end
 end
