@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
+  gem 'faker', '~> 2'
+  gem 'ffaker'
   gem 'standard'
 
   gem 'rubocop'
