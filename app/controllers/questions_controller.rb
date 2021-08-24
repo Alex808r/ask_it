@@ -4,13 +4,13 @@ class QuestionsController < ApplicationController
   # метода для нужных action
 
   def index
-    @questions = Question.all
+    @questions = Question.order(created_at: :desc).page params[:page]
   end
 
   def show
     # @question = Question.find_by(id: params[:id])
     @answer = @question.answers.build
-    @answers = @question.answers.order created_at: :desc # для отображения всех ответов
+    @answers = @question.answers.order(created_at: :desc).page(params[:page]).per_page(2) # для отображения всех ответов
     # @answers = Answer.where(question_id: @question.id).order created_at: :desc - для отображения всех ответов альтернативная запись
     # @answers = Answer.where(question: @question).limit(2).order created_at: :desc - для отображения всех ответов альтернативная запись c лимитом 2 записи
 
