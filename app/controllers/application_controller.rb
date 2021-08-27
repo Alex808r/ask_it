@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include ErrorHandling
+  include Pagy::Backend
 
   # Вынесли в Concerns
   # rescue_from ActiveRecord::RecordNotFound, with: :notfound
