@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   # post '/questions', to: 'questions#create'
   # get 'questions/:id/edit', to: 'questions#edit'
 
+
   # resources :questions, only: %i[index show new edit create update destroy]
 
+  resources :users, only: %i[new create]
   resources :questions do
     resources :answers, except: %i[new show]
   end
