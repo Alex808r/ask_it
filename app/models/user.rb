@@ -19,5 +19,5 @@ class User < ApplicationRecord
                                                               # делаем на уровне самой базы данных, для этого прописываем это в миграции перед запуском null: false, index: {unique: true}
   validates :name, presence: true
 
-  has_secure_password
+  has_secure_password # для bcrypt - пароль и подтверждение
 end
