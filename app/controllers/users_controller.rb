@@ -7,8 +7,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new (user_params)
     if @user.save
-      session[:user_id] = @user.id
-      #flash[:success] = "Welcome to the app, #{@user.name}" строку заменили для исползования декоратора
+      # session[:user_id] = user.id вынесли в concerns authenticate.rb заменили на sign_in
+      sign_in @user
+      # flash[:success] = "Welcome to the app, #{@user.name}" строку заменили для исползования декоратора
       flash[:success] = "Welcome to the app, #{current_user.name_or_email}"
       redirect_to root_path
     else
