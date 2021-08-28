@@ -6,11 +6,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    #render plain: params.to_yaml
+    # render plain: params.to_yaml and return
     user =User.find_by email: params[:email]
     if user&.authenticate(params[:password])
       # session[:user_id] = user.id вынесли в concerns authenticate.rb заменили на sign_in
       sign_in user
+      remember(user) if params[:remember_me] == '1'
       flash[:success] = "Welcome back, #{current_user.name_or_email}"
       redirect_to root_path
     else
