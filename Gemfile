@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+gem 'draper', '~> 4.0'
+
 #gem 'kaminari',                   '~> 1.2'
 gem 'pagy',                   '~> 4.10'
 

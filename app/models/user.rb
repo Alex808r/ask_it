@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true # проверка уникальности на уровен ror, не сработает если
                                                               # обращаться напряму к базе данных. Дополнительно проверку уникльности
                                                               # делаем на уровне самой базы данных, для этого прописываем это в миграции перед запуском null: false, index: {unique: true}
-  validates :name, presence: true
+                                                              #validates :name, presence: true
 
   has_secure_password # для bcrypt - пароль и подтверждение
 end
