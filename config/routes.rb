@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  #root 'hello#start' # или root to: 'hello#start', as: 'home'
+  # root 'hello#start' # или root to: 'hello#start', as: 'home'
 
   root 'pages#index'
 
@@ -7,7 +9,6 @@ Rails.application.routes.draw do
   # get '/questions/new', to: 'questions#new'
   # post '/questions', to: 'questions#create'
   # get 'questions/:id/edit', to: 'questions#edit'
-
 
   # resources :questions, only: %i[index show new edit create update destroy]
 

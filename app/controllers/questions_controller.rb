@@ -1,6 +1,7 @@
-class QuestionsController < ApplicationController
+# frozen_string_literal: true
 
-  before_action :set_question!, only: %i[show edit update destroy ] # вынесли общий код в метод и определили загрузку
+class QuestionsController < ApplicationController
+  before_action :set_question!, only: %i[show edit update destroy] # вынесли общий код в метод и определили загрузку
   # метода для нужных action
 
   def index
@@ -13,14 +14,15 @@ class QuestionsController < ApplicationController
     # @question = Question.find_by(id: params[:id])
     @question = @question.decorate
     @answer = @question.answers.build
-    # @answers = @question.answers.order(created_at: :desc).page(params[:page]).per_page(2) # для отображения всех ответов kaminari
+    # @answers = @question.answers.order(created_at: :desc).page(params[:page]).per_page(2)
+    # для отображения всех ответов kaminari
     @pagy, @answers = pagy @question.answers.order(created_at: :desc) # pagy
     @answers = @answers.decorate
 
-    # @answers = Answer.where(question_id: @question.id).order created_at: :desc - для отображения всех ответов альтернативная запись
-    # @answers = Answer.where(question: @question).limit(2).order created_at: :desc - для отображения всех ответов альтернативная запись c лимитом 2 записи
-
-
+    # @answers = Answer.where(question_id: @question.id).order created_at: :desc
+    # - для отображения всех ответов альтернативная запись
+    # @answers = Answer.where(question: @question).limit(2).order created_at: :desc
+    # - для отображения всех ответов альтернативная запись c лимитом 2 записи
   end
 
   def new
@@ -28,10 +30,10 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    #render plain: params
+    # render plain: params
     @question = Question.new(question_params)
     if @question.save
-      flash[:success] = "Question created!"
+      flash[:success] = 'Question created!'
       redirect_to questions_path
     else
       render :new
@@ -46,7 +48,7 @@ class QuestionsController < ApplicationController
   def update
     # @question = Question.find_by(id: params[:id])
     if @question.update(question_params)
-      flash[:success] = "Question updated!"
+      flash[:success] = 'Question updated!'
       redirect_to questions_path
     else
       render :edit
@@ -56,7 +58,7 @@ class QuestionsController < ApplicationController
   def destroy
     # @question = Question.find_by(id: params[:id])
     @question.destroy
-    flash[:success] = "Question destroy!"
+    flash[:success] = 'Question destroy!'
     redirect_to questions_path
   end
 
@@ -67,7 +69,7 @@ class QuestionsController < ApplicationController
   end
 
   def set_question!
-    @question = Question.find(params[:id]) #RecordNotFound если запись не найдена.
+    @question = Question.find(params[:id]) # RecordNotFound если запись не найдена.
     # @question = Question.find_by(id: params[:id]) аналогичная запись/ Если вопрос с id не будет найден, получим ошибку
     # NoMethodError. Поэтому лучше использовать Question.find(params[:id])
   end

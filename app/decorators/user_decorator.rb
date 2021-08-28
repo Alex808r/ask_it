@@ -1,12 +1,10 @@
+# frozen_string_literal: true
+
 class UserDecorator < Draper::Decorator
   delegate_all
 
   def name_or_email
-    if name.present?
-      return name
-    else
-      email.split('@')[0]
-    end
+    name.presence || email.split('@')[0]
   end
 
   # аналогичная запись
@@ -14,6 +12,4 @@ class UserDecorator < Draper::Decorator
   #   return name if name.present?
   #   email.split('@')[0]
   # end
-
-
 end
