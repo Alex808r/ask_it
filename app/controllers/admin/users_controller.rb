@@ -13,7 +13,12 @@ module Admin
     end
 
     def create
+      if params[:archive].present?
+        UserBulkService.call params[:archive]
+        flash[:success] = 'Users imported!'
+      end
 
+      redirect_to admin_users_path
     end
 
     def respond_with_zipped_users

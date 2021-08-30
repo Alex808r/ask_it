@@ -5,6 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
+
+gem 'activerecord-import', '~> 1.2'
+gem 'rubyXL', '~> 3.4'
 gem 'caxlsx', '~> 3.1'
 gem 'caxlsx_rails', '~> 0.6'
 gem 'rubyzip', '~> 2'
