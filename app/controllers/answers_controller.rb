@@ -13,9 +13,13 @@ class AnswersController < ApplicationController
       flash[:success] = 'Answer created'
       redirect_to question_path(@question)
     else
+      @question = @question.decorate
       # @answers = @question.answers.order created_at: :desc # для отображения всех ответов
-      @answers = @question.answers.order(created_at: :desc).page(params[:page]) # решение ошибки
+      # @answers = @question.answers.order(created_at: :desc).page(params[:page]) # решение ошибки
       # NoMethodError in Answers#create
+
+      @pagy, @answers = pagy @question.answers.order created_at: :desc
+      @answers = @answers.decorate
       render 'questions/show'
     end
   end
