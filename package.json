@@ -4,7 +4,7 @@
   "dependencies": {
     "@rails/actioncable": "latest",
     "@rails/activestorage": "latest",
-    "@rails/webpacker": "^6.0.0-rc.5",
+    "@rails/webpacker": "6.0.0-rc.5",
     "autoprefixer": "^10.3.3",
     "css-loader": "^6.2.0",
     "css-minimizer-webpack-plugin": "^3.0.2",
