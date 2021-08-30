@@ -1,6 +1,6 @@
 module Admin
   class UsersController < ApplicationController
-    before_action :require_authentication
+     before_action :require_authentication
 
     def index
       respond_to do |format|
